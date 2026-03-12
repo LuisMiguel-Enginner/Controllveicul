@@ -1,0 +1,462 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    background: #0a1929;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 40px 0;
+}
+
+/* Background com imagem e overlay */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(10, 25, 41, 0.85) 100%),
+        url('chiptronic_bg.png') center/cover no-repeat;
+    z-index: 0;
+}
+
+/* Elementos técnicos flutuantes */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    animation: techGrid 30s linear infinite;
+    z-index: 1;
+}
+
+@keyframes techGrid {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(50px) translateX(50px); }
+}
+
+/* Linhas de scan técnicas */
+.scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 0, 0, 0.8) 25%, 
+        rgba(255, 193, 7, 0.8) 50%, 
+        rgba(255, 0, 0, 0.8) 75%, 
+        transparent 100%);
+    box-shadow: 
+        0 0 10px rgba(255, 0, 0, 0.5),
+        0 0 20px rgba(255, 193, 7, 0.3);
+    animation: scanMove 4s linear infinite;
+    z-index: 2;
+}
+
+.scan-line:nth-child(1) { top: 15%; animation-delay: 0s; }
+.scan-line:nth-child(2) { top: 45%; animation-delay: 2s; }
+.scan-line:nth-child(3) { top: 75%; animation-delay: 1s; }
+
+@keyframes scanMove {
+    0% { transform: translateX(-100%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* Elementos decorativos circulares */
+.tech-circle {
+    position: absolute;
+    border: 2px solid rgba(0, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+    z-index: 1;
+}
+
+.tech-circle:nth-child(4) {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    border-color: rgba(255, 0, 0, 0.15);
+}
+
+.tech-circle:nth-child(5) {
+    width: 200px;
+    height: 200px;
+    bottom: 15%;
+    right: 10%;
+    border-color: rgba(255, 193, 7, 0.15);
+    animation-direction: reverse;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Container principal */
+.login-container,
+.cadastro-container {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(135deg, 
+        rgba(15, 30, 50, 0.95) 0%, 
+        rgba(20, 40, 65, 0.9) 100%);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 40px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 
+        0 0 50px rgba(255, 0, 0, 0.2),
+        0 0 100px rgba(255, 193, 7, 0.1),
+        inset 0 0 80px rgba(0, 255, 255, 0.05);
+    animation: containerFadeIn 1s ease-out;
+    margin: 0 auto;
+}
+
+.cadastro-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Borda animada do container */
+.login-container::before,
+.cadastro-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        #ff0000, 
+        #ffc107, 
+        #00ffff, 
+        #ff0000);
+    border-radius: 15px;
+    z-index: -1;
+    opacity: 0;
+    animation: borderGlow 3s ease-in-out infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.3; background-position: 100% 50%; }
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo-container img {
+    width: 300px;
+    height: auto;
+    filter: 
+        drop-shadow(0 0 20px rgba(255, 0, 0, 0.6))
+        drop-shadow(0 0 40px rgba(255, 193, 7, 0.3));
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+        filter: 
+            drop-shadow(0 0 20px rgba(255, 0, 0, 0.6))
+            drop-shadow(0 0 40px rgba(255, 193, 7, 0.3));
+    }
+    50% { 
+        transform: translateY(-10px);
+        filter: 
+            drop-shadow(0 0 30px rgba(255, 0, 0, 0.8))
+            drop-shadow(0 0 60px rgba(255, 193, 7, 0.5));
+    }
+}
+
+/* Título */
+h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.5),
+        0 0 20px rgba(255, 0, 0, 0.3),
+        2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff0000, #ffc107, transparent);
+}
+
+/* Inputs */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.cadastro-container .input-group {
+    margin-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(10, 25, 41, 0.6);
+    border: 2px solid rgba(0, 255, 255, 0.4);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+    padding-right: 45px;
+}
+
+select option,
+select optgroup {
+    background: #ffffff;
+    color: #000000;
+    padding: 10px;
+}
+
+input:focus, select:focus {
+    border-color: #ff0000;
+    background: rgba(10, 25, 41, 0.8);
+    box-shadow: 
+        0 0 0 3px rgba(255, 0, 0, 0.2),
+        0 0 20px rgba(255, 0, 0, 0.4),
+        inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Labels dos selects */
+.select-label {
+    display: block;
+    color: #00ffff;
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #3da6b4 0%, #4a9fb9 50%, #5dc0d1 100%);
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 5px 20px rgba(255, 0, 0, 0.4),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cadastro-container button {
+    margin-top: 10px;
+    display: block;
+    visibility: visible;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent);
+    transition: left 0.6s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 30px rgba(255, 0, 0, 0.6),
+        0 0 40px rgba(255, 193, 7, 0.4),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 15px rgba(255, 0, 0, 0.5),
+        inset 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Links */
+.link-container {
+    text-align: center;
+    margin-top: 25px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+}
+
+.link-container a {
+    color: #00e1ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+    position: relative;
+}
+
+.link-container a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff0000, #ffc107);
+    transition: width 0.3s ease;
+}
+
+.link-container a:hover::after {
+    width: 100%;
+}
+
+.link-container a:hover {
+    color: #ff0000;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+/* Grid de formulário */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Detalhes técnicos nos cantos */
+.tech-detail {
+    position: absolute;
+    color: rgba(0, 255, 255, 0.3);
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    z-index: 5;
+}
+
+.tech-detail.top-left {
+    top: 10px;
+    left: 10px;
+}
+
+.tech-detail.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.tech-detail.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+.tech-detail.bottom-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .logo-container img {
+        width: 240px;
+    }
+    
+    h2 {
+        font-size: 22px;
+        letter-spacing: 3px;
+    }
+    
+    button {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+    
+    .tech-circle {
+        display: none;
+    }
+}

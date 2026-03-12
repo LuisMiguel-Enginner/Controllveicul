@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Chiptronic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scan-line"></div>
+    <div class="scan-line"></div>
+    <div class="scan-line"></div>
+    <div class="tech-circle"></div>
+    <div class="tech-circle"></div>
+
+    <div class="cadastro-container">
+        <div class="tech-detail top-left">SYS_v2.4.1</div>
+        <div class="tech-detail top-right">NEW_USER</div>
+        <div class="tech-detail bottom-left">CHIPTRONIC©</div>
+        <div class="tech-detail bottom-right">ID: #B9K3</div>
+        <div class="logo-container">
+            <img src="chip2.png" alt="Chiptronic Logo">
+        </div>
+
+        <h2>Novo Cadastro</h2>
+
+        <form action="salvar_usuario.php" method="POST">
+            <div class="input-group">
+                <input type="text" name="nome" placeholder="👤 Nome completo" required>
+            </div>
+
+            <div class="input-group">
+                <input type="email" name="email" placeholder="📧 Email" required>
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="senha" placeholder="🔒 Senha (mínimo 6 caracteres)" required minlength="6">
+            </div>
+            <div class="input-group">
+                <input type="password" name="confirmar_senha" placeholder="🔒 Confirmar senha" required minlength="6">
+            </div>
+            
+            <div class="input-group">
+                <label class="select-label">Perfil</label>
+                <select name="perfil_id" required>
+                    <option value="2">Barracão</option>
+                    <option value="3">Visualizador</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" name="setor_nome" placeholder="🏢 Qual seu setor?" required>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <div class="link-container">
+            <p>
+                Já tem conta?
+                <a href="login.php">Voltar ao login</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
