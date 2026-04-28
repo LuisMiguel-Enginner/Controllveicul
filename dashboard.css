@@ -62,13 +62,7 @@ body::before {
     border-bottom: 2px solid var(--border-color);
 }
 
-.sidebar-logo {
-    width: 200px;
-    height: auto;
-    display: block;
-    margin: 0 auto 30px;
-    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
-}
+/* Logo removida */
 
 .user-profile {
     display: flex;

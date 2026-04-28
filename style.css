@@ -25,9 +25,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(10, 25, 41, 0.85) 100%),
-        url('chiptronic_bg.png') center/cover no-repeat;
+    background: linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(10, 25, 41, 0.85) 100%);
     z-index: 0;
 }
 
@@ -176,35 +174,7 @@ body::after {
     50% { opacity: 0.3; background-position: 100% 50%; }
 }
 
-/* Logo */
-.logo-container {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.logo-container img {
-    width: 300px;
-    height: auto;
-    filter: 
-        drop-shadow(0 0 20px rgba(255, 0, 0, 0.6))
-        drop-shadow(0 0 40px rgba(255, 193, 7, 0.3));
-    animation: logoFloat 3s ease-in-out infinite;
-}
-
-@keyframes logoFloat {
-    0%, 100% { 
-        transform: translateY(0px);
-        filter: 
-            drop-shadow(0 0 20px rgba(255, 0, 0, 0.6))
-            drop-shadow(0 0 40px rgba(255, 193, 7, 0.3));
-    }
-    50% { 
-        transform: translateY(-10px);
-        filter: 
-            drop-shadow(0 0 30px rgba(255, 0, 0, 0.8))
-            drop-shadow(0 0 60px rgba(255, 193, 7, 0.5));
-    }
-}
+/* Logo removida */
 
 /* Título */
 h2 {

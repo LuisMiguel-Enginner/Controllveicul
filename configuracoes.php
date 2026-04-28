@@ -25,7 +25,7 @@ $notifications_enabled = isset($_SESSION['notifications_enabled']) ? (bool)$_SES
 <body>
     <aside class="sidebar">
         <div class="sidebar-header">
-            <img src="chip2.png" alt="Chiptronic Logo" class="sidebar-logo">
+            <!-- Logo removida -->
             <div class="user-profile">
                 <div class="user-avatar">
                     <?php if ($usuario_foto): ?>

@@ -21,9 +21,7 @@ session_start();
         <div class="tech-detail top-right">SECURE_LOGIN</div>
         <div class="tech-detail bottom-left">CHIPTRONIC©</div>
         <div class="tech-detail bottom-right">ID: #A7F2</div>
-        <div class="logo-container">
-            <img src="chip2.png" alt="Chiptronic Logo">
-        </div>
+        <!-- Logo removida -->
 
         <h2>Controll Veicul</h2>
 

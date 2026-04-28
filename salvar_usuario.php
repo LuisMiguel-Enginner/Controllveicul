@@ -93,9 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="tech-detail bottom-left">CHIPTRONIC©</div>
         <div class="tech-detail bottom-right">ID: #B9K3</div>
 
-        <div class="logo-container">
-            <img src="chip2.png" alt="Chiptronic Logo">
-        </div>
+        <!-- Logo removida -->
 
         <h2>Novo Cadastro</h2>
 
